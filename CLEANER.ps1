@@ -65,8 +65,7 @@ foreach ($path in $usbPaths) {
 # --- Clear Windows Search History ---
 Remove-Item "$env:APPDATA\Microsoft\Windows\Search\Data\Applications\Windows\*.db" -Force -ErrorAction SilentlyContinue
 
-# --- (Optional) Clear Event Logs ---
-# Uncomment if you want to wipe logs
-# wevtutil el | ForEach-Object { wevtutil cl "$_" }
+# --- Clear Event Logs ---
+wevtutil el | ForEach-Object { wevtutil cl "$_" }
 
 Write-Output "cleanup completed successfully."
